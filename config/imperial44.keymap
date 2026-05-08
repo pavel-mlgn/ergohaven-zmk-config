@@ -196,18 +196,27 @@
             display-name = "Mouse";
             bindings = <
 &none       &kp LG(N1)   &kp LG(N2)    &kp LG(N3)   &kp LG(N4)   &none                                       &none       &none        &none        &none       &none           &none
-&none       &msc SCRL_UP &msc SCRL_DOWN &mkp RCLK   &mkp LCLK    &mkp MCLK                                   &none       &none        &none        &none       &none           &none
+&none       &none        &none         &none        &none        &none                                       &none       &none        &none        &none       &none           &none
 &none       &kp LC(Z)    &kp LC(X)     &kp LC(C)    &kp LC(V)    &none        &none         &none           &none       &none        &none        &none       &none           &none
                                                     &none        &none        &none         &none           &none       &none
             >;
             /*
-             * Мышь: BTN1=LCLK (поз.28), BTN2=RCLK (поз.27), BTN3=MCLK (поз.29).
-             * Колесо: SCRL_UP (поз.13), SCRL_DOWN (поз.14) — это эквивалент
-             * KC_WH_U/KC_WH_D из QMK.
+             * TODO: Mouse-функционал отключён, так как требует:
+             *   1) CONFIG_ZMK_POINTING=y в config/imperial44.conf
+             *   2) #include <dt-bindings/zmk/pointing.h> в этом файле
+             *   3) Замена &none обратно на:
+             *        &mkp LCLK / &mkp RCLK / &mkp MCLK
+             *        &msc SCRL_UP / &msc SCRL_DOWN
              *
-             * USER19..36 на правой стороне — Ergohaven-специфические системные
-             * keycodes из QMK. Все стоят &none. После настройки RuEn часть
-             * можно будет вернуть.
+             * QMK-маппинг был:
+             *   BTN1 (LCLK) → pos 28 (поз. F в нижней строке слева)
+             *   BTN2 (RCLK) → pos 27 (поз. D)
+             *   BTN3 (MCLK) → pos 29 (поз. G)
+             *   WH_U (scroll up)   → pos 16 (поз. F home row)
+             *   WH_D (scroll down) → pos 15 (поз. D home row)
+             *
+             * USER19..36 на правой стороне — Ergohaven RuEn-специфические
+             * keycodes. После настройки RuEn-блока часть можно вернуть.
              */
         };
 
